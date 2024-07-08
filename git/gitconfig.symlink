@@ -43,3 +43,13 @@
 [init]
 	defaultBranch = main
 
+[user]
+	email = 25828824+brrusselburg@users.noreply.github.com@users.noreply.github.com
+	signingkey = 9B8B663AD07B98F5
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[commit]
+	gpgsign = true

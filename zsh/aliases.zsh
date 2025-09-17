@@ -23,3 +23,4 @@ alias drefresh="cd ~/dev/discourse/discourse;gl;dInstall;dMigrateTest;dStart"
 alias dreload="cd ~/dev/discourse/discourse;bin/ember-cli -u"
 
 alias remakedb-test="LOAD_PLUGINS=1 bin/rails db:drop db:create db:migrate RAILS_ENV=test"
+alias claude="AWS_ACCESS_KEY_ID=\$(op item get 'benji - claude on bedrock' --account=discourse --fields='access key id' --reveal) AWS_SECRET_ACCESS_KEY=\$(op item get 'benji - claude on bedrock' --account=discourse --fields='secret access key' --reveal) AWS_REGION=us-west-2 CLAUDE_CODE_USE_BEDROCK=1 claude"

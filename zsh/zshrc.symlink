@@ -69,10 +69,7 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/dev/dotfiles_v2/zsh/p10k.zsh
 
-# Kitty setup
-autoload -Uz compinit
-compinit
-source <(kitty + complete setup zsh)
+# Moved kitty setup to after PATH configuration
 
 # git duet settings
 export GIT_DUET_CO_AUTHORED_BY=1
@@ -101,3 +98,11 @@ export PATH="$PATH:$HOME/dev/discourse/discourse-customer-setup-cli"
 export DISCOURSE_PATH="$HOME/dev/discourse/discourse"
 
 export PATH="/opt/homebrew/bin:$PATH"
+
+# Kitty setup (moved here to ensure PATH is configured)
+if command -v kitty >/dev/null 2>&1; then
+    autoload -Uz compinit
+    compinit
+    source <(kitty + complete setup zsh)
+fi
+

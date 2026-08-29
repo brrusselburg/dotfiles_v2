@@ -106,3 +106,16 @@ if command -v kitty >/dev/null 2>&1; then
     source <(kitty + complete setup zsh)
 fi
 
+export PATH="$HOME/.local/bin:$PATH"
+export CLAUDE_CONFIG_DIR="/Users/benjirusselburg/dev/dotfiles_v2/.claude"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/benjirusselburg/.lmstudio/bin"
+# End of LM Studio CLI section
+
+
+# fnm
+FNM_PATH="/opt/homebrew/opt/fnm/bin"
+if [ -d "$FNM_PATH" ]; then
+  eval "$(fnm env --shell zsh --use-on-cd --version-file-strategy=recursive)"
+fi

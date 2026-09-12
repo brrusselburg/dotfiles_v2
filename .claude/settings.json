@@ -1,0 +1,7 @@
+{
+  "enabledPlugins": {
+    "ruby-lsp@claude-plugins-official": true
+  },
+  "promptSuggestionEnabled": false,
+  "theme": "dark-daltonized"
+}

@@ -1,0 +1,22 @@
+# tab layout
+layout tall
+
+# default working directory
+cd dev
+
+# tall window
+launch --title "Edit"
+
+# top right window
+launch --title "Tests"
+
+# bottom right window
+launch --title "Server"
+
+# new tab
+new_tab test
+cd dev/discourse/discourse
+enabled_layouts *
+layout stack
+launch zsh
+launch claude

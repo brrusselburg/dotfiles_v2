@@ -1,0 +1,20 @@
+# Only hand-authored config is tracked here. Everything else in this
+# directory is Claude Code runtime/session state (history, caches,
+# backups, daemon files, downloaded plugin content) and must stay local.
+*
+
+!/.gitignore
+
+!/agents/
+!/agents/**
+
+!/skills/
+!/skills/**
+
+!/settings.json
+!/settings.local.json
+
+!/plugins/
+!/plugins/installed_plugins.json
+!/plugins/known_marketplaces.json
+!/plugins/blocklist.json

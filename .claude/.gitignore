@@ -12,9 +12,3 @@
 !/skills/**
 
 !/settings.json
-!/settings.local.json
-
-!/plugins/
-!/plugins/installed_plugins.json
-!/plugins/known_marketplaces.json
-!/plugins/blocklist.json

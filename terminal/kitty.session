@@ -5,17 +5,17 @@ layout tall
 cd dev
 
 # tall window
-launch --title "Edit"
+# launch --title "Edit"
 
 # top right window
-launch --title "Tests"
+# launch --title "Tests"
 
 # bottom right window
-launch --title "Server"
+# launch --title "Server"
 
 # new tab
-new_tab test
-cd dev/discourse/discourse
+# new_tab test
+# cd dev/discourse/discourse
 enabled_layouts *
 layout stack
 launch zsh

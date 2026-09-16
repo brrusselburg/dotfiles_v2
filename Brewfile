@@ -1,20 +1,14 @@
 cask_args appdir: "/Applications"
 
-tap "homebrew/core"
-tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "buo/cask-upgrade"
-tap "homebrew/cask-fonts"
+tap "buo/cask-upgrade" # provides `brew cu`
 
-tap "jesseduffield/lazygit"
-
-brew install "mas" # Mac Apple Store, so we can use mas in the future like 'mas install lalala'
+brew "mas" # Mac App Store CLI, e.g. 'mas install lalala'
 
 brew "tig" # https://jonas.github.io/tig/doc/manual.html
-brew "1password"
-brew "bazecor"
-brew "visual-studio-code"
 brew "fnm" # node version manager
+brew "rbenv" # ruby version manager, initialized in zsh/zshrc.symlink
+brew "powerlevel10k" # zsh theme sourced by zsh/zshrc.symlink
+brew "git-lfs" # required by the lfs filter in git/gitconfig.symlink
 brew "github-keygen"
 brew "gh"
 brew "neovim"
@@ -34,6 +28,10 @@ brew "task" # https://taskwarrior.org/
 brew "httpie" # https://httpie.io/docs/cli/usage
 brew "docker"
 
+cask "kitty" # terminal; config in terminal/, referenced by zsh/zshrc.symlink
+cask "1password"
+cask "bazecor"
+cask "visual-studio-code"
 cask "firefox"
 cask "typora"
 # cask 'airtable'

@@ -15,11 +15,6 @@ then
   source ~/.localrc
 fi
 
-if [[ /Users/benjirusselburg/dev/dotfiles_v2/zsh/aliases.zsh ]]
-then
-  source /Users/benjirusselburg/dev/dotfiles_v2/zsh/aliases.zsh
-fi
-
 # all of our zsh files
 typeset -U config_files
 config_files=($ZSH/**/*.zsh)
@@ -37,7 +32,7 @@ do
 done
 
 # Set up fzf key bindings and fuzzy completion
-eval "$(fzf --zsh)"
+(( $+commands[fzf] )) && eval "$(fzf --zsh)"
 
 # initialize autocomplete here, otherwise functions won't be loaded
 autoload -U compinit
@@ -54,7 +49,7 @@ unset config_files
 GITSTATUS_LOG_LEVEL=DEBUG
 
 # load direnv
-eval "$(direnv hook zsh)"
+(( $+commands[direnv] )) && eval "$(direnv hook zsh)"
 
 # Better history
 # Credits to https://coderwall.com/p/jpj_6q/zsh-better-history-searching-with-arrow-keys
@@ -64,12 +59,6 @@ zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
-
-# p10k customization
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/dev/dotfiles_v2/zsh/p10k.zsh
-
-# Moved kitty setup to after PATH configuration
 
 # git duet settings
 export GIT_DUET_CO_AUTHORED_BY=1
@@ -85,32 +74,31 @@ function editzsh() {
   reprofile
 }
 
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
-source <(fzf --zsh)
+P10K_THEME=/opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+[[ -f $P10K_THEME ]] && source $P10K_THEME
+unset P10K_THEME
+
+# p10k customization. To re-generate, run `p10k configure`.
+[[ -f $ZSH/zsh/p10k.zsh ]] && source $ZSH/zsh/p10k.zsh
 
 export PATH="/opt/homebrew/opt/postgresql@17/bin:/bin:/usr/bin:/usr/local/bin:${PATH}"
 
 # load rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init - --no-rehash)"
-
-export PATH="$PATH:$HOME/dev/discourse/discourse-customer-setup-cli"
-export DISCOURSE_PATH="$HOME/dev/discourse/discourse"
+(( $+commands[rbenv] )) && eval "$(rbenv init - --no-rehash)"
 
 export PATH="/opt/homebrew/bin:$PATH"
 
-# Kitty setup (moved here to ensure PATH is configured)
+# Kitty setup (after PATH configuration so kitty is findable)
 if command -v kitty >/dev/null 2>&1; then
-    autoload -Uz compinit
-    compinit
     source <(kitty + complete setup zsh)
 fi
 
 export PATH="$HOME/.local/bin:$PATH"
-export CLAUDE_CONFIG_DIR="/Users/benjirusselburg/dev/dotfiles_v2/.claude"
+export CLAUDE_CONFIG_DIR="$ZSH/.claude"
 
 # Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/benjirusselburg/.lmstudio/bin"
+export PATH="$PATH:$HOME/.lmstudio/bin"
 # End of LM Studio CLI section
 
 

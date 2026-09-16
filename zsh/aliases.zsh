@@ -3,8 +3,8 @@ alias reload=". ~/.zshrc"
 alias py="python3"
 
 # Navigation
-alias dev="cd /Users/benjirusselburg/dev"
-alias home="cd /Users/benjirusselburg"
+alias dev='cd $PROJECTS'
+alias home='cd ~'
 
 # Git
 alias uhhh="git for-each-ref --sort='authordate:iso8601' --format=' %(color:green)%(authordate:relative)%09%(color:white)%(refname:short) / %(contents:subject)' refs/heads"

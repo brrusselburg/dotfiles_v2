@@ -1,4 +1,7 @@
-# holman does dotfiles
+# brrusselburg's dotfiles
+
+Forked from [holman/dotfiles](https://github.com/holman/dotfiles). The original
+README follows, lightly adapted.
 
 Your dotfiles are how you personalize your system. These are mine.
 
@@ -50,16 +53,24 @@ There's a few special files in the hierarchy.
 Run this:
 
 ```sh
-git clone https://github.com/holman/dotfiles.git ~/.dotfiles
+git clone git@github.com:brrusselburg/dotfiles_v2.git ~/dev/dotfiles_v2
+ln -s ~/dev/dotfiles_v2 ~/.dotfiles
 cd ~/.dotfiles
 script/bootstrap
 ```
 
-This will symlink the appropriate files in `.dotfiles` to your home directory.
-Everything is configured and tweaked within `~/.dotfiles`.
+The repo lives in `~/dev/dotfiles_v2` (alongside other projects), and
+`~/.dotfiles` is a symlink to it. That symlink matters: `$ZSH` is set to
+`$HOME/.dotfiles` and everything — the topic `*.zsh` loader, `$ZSH/bin` on
+`PATH`, the `git` aliases, `bin/dot` — resolves through it. Create it before
+running `script/bootstrap`.
 
-The main file you'll want to change right off the bat is `zsh/zshrc.symlink`,
-which sets up a few paths that'll be different on your particular machine.
+`script/bootstrap` will symlink the appropriate files into your home directory,
+then run `bin/dot` to install Homebrew, set macOS defaults, and install
+everything in the `Brewfile`.
+
+Nothing in here should need per-machine editing. If you find yourself wanting
+to hardcode an absolute path into `zsh/zshrc.symlink`, use `$ZSH` instead.
 
 `dot` is a simple script that installs some dependencies, sets sane macOS
 defaults, and so on. Tweak this script, and occasionally run `dot` from
